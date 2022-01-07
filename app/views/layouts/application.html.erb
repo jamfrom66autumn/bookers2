@@ -11,34 +11,60 @@
 
   <body>
     <header>
-      <li>Bookers</li>
-      <% if user_signed_in? %>
-        <li>
-          <%= link_to "Home",users_path %>
-        </li>
-        <li>
-        </li>
-        <li>
-          <%= link_to "Books", books_path %>
-        </li>
-        <li>
-          <%= link_to "log out", destroy_user_session_path, method: :delete %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "Home", root_path%>
-        </li>
-        <li>
-          <%= link_to "about", homes_about_path %>
-        </li>
-        <li>
-          <%= link_to "Sign up", new_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "log in", new_user_session_path %>
-        </li>
-      <% end %>
+      <nav class="navbar navbar-expand-lg navbar-dark db-dark">
+        <div class="container">
+          <span class= "grey">
+            <%= link_to "Bookers", root_path,class:"link" %>
+          </span>
+          <div class="collapse navbar-collapse" id="nabvarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to "Home",user_path(current_user.id), class:"link fas fa-home" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Users",users_path, class:"link fas fa-users" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Books", books_path, class:"link fas fa-book-open"  %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Log out", destroy_user_session_path, class:"link fas fa-sign-out-alt" , method: :delete %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to "Home", root_path, class:"link fas fa-home" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "About", home_about_path, class:"link fas fa-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Sign up", new_user_registration_path, class:"link fas fa-user-plus" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Log in", new_user_session_path, class:"link fas fa-sign-in-alt" %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
+
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
+
     <%= yield %>
+
+    <footer>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
+            <p>CopyRight Infratop.inc</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

@@ -5,12 +5,12 @@
   </thead>
 
   <tbody>
-    <%  @books.each do |book| %>
+    <%  @users.each do |user| %>
     <tr>
       <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %><td>
-      <td><%= book.title %></td>
-      <td><%= book.body %></td>
+      <td><%= user.name %></td>
+      <td><%= user.introduction %></td>
    </tr>
    <% end %>
   </tbody>
-</table>
+</table>%
