@@ -1,1 +1,23 @@
-<%= render 'users/list' %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'users/list' %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <%= attachment_image_tag @user, :profile_image , :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></br>
+              <%= @user.name %>
+            </td>
+            <td><%= @book.user_id.title %></td>
+            <td><%= @book.user_id.body %></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -16,8 +16,10 @@
         <tbody>
           <tr>
             <th><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%></th>
-            <th><%= @book.title %></th>
-            <th><%= @book.body %></th>
+            <% @books.each do |book|%>
+            <th><%= book.title %></th>
+            <th><%= book.body %></th>
+            <% end%>
           </tr>
         </tbody>
 
